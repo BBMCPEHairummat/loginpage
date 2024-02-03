@@ -1,0 +1,256 @@
+<html>
+  <header>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  </header>
+  <h1 align="center" id="webName">CodeGo | Success way</h1>
+  <div class="bodies" align="center" id="loginBody"> 
+    <h1>Sign Up | Quick & Easy</h1>
+    <h2 align="left">Name</h2>
+    <input class="inputs" id="name" placeholder="Your name here"> 
+    <h2 align="left">Password</h2>
+    <input class="inputs" id="password" placeholder="Your password here"> 
+    <br>
+    <button onclick="resetInput()" id="cancel">Cancel</button><button onclick="save()" id="saveName">Save</button>
+  </div>
+  <div class="bodies" align="center" id="signinBody"> 
+    <h1>Log In | Easy As Usual</h1>
+    <h2 align="left">Identity</h2>
+    <input type="number" class="inputs" id="id1" placeholder="Your Identity here"> 
+    <h2 align="left">Password</h2>
+    <input class="inputs" id="password1" placeholder="Your password here"> 
+    <button onclick="resetInput()" id="cancel">Cancel</button><button onclick="save1()" id="saveName">Save</button>
+  </div>
+  <div class="bodies" align="center" id="signedIn">
+    <h1>Signed In | Hurray!</h1>
+    <b class="loggedIn">Congo!</b><br><b class="loggedIn">You're Signed In</b>
+    <p id="passwordPara"></p>
+    <button onclick="thanks()" id="startCreating">Start Creating</button>
+  </div>
+  <div class="bodies" align="center" id="loggedIn">
+    <h1>Logged In | Welcome Back</h1>
+    <b class="loggedIn">You're Logged In</b>
+    <p id="passwordPara"></p>
+    <button onclick="thanks()" id="startCreating">Start Creating</button>
+  </div>
+  <div class="bodies" align="center" id="LogSign">
+    <h1>Let's Get Started</h1>
+    <button class="logSignBTN" onclick="reqLogIn()">Log In</button><br>
+    <button class="logSignBTN" id="BTNsignIn" onclick="reqSignIn()">Sign In</button>
+  </div>
+ <style>
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-image: linear-gradient(310deg, blue, red);
+}
+#webName {
+  color: white;
+  font-size: 35px;
+  margin-top: 50px;
+}
+h1 { color: black; }
+h2 { position: relative; left: 17px; }
+.loggedIn {
+  font-size: 40px;
+}
+#startCreating {
+  background-color: black;
+  color: white;
+  border-radius: 2px;
+  border: solid black;
+  position: relative;
+  padding: 10px;
+  font-size: 30px;
+  margin: 0px;
+}
+.invalidPara {
+  color: red;
+  display: none;
+  left: 15px;
+  position: relative;
+}
+.bodies {
+  width: auto;
+  height: 400px;
+  border: none;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: white;
+  margin-top: 30px;
+}
+#loginBody {
+  display: none;
+}
+#signinBody {
+  display: none;
+}
+#signedIn {
+  display: none;
+  height: 350px;
+}
+#loggedIn {
+  display: none;
+  height: 280px;
+}
+.logSignBTN {
+  background-color: black;
+  width: 300px;
+  color: white;
+  border-radius: 2px;
+  border: solid black;
+  position: relative;
+  padding: 10px;
+  top: 30px;
+  font-size: 30px;
+}
+#BTNsignIn {
+  background-color: transparent;
+  margin-top: 40px;
+  color: black;
+}
+#LogSign {
+  height: 300px;
+  display: none;
+}
+#saveName {
+  background-color: black;
+  border: none;
+  height: 30px;
+  width: 100px;
+  position: relative;
+  border-radius: 3px;
+  color: white;
+  font-size: 20px;
+  top: 17px;
+  right: -5px;
+}
+#cancel {
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 190px;
+  height: 30px;
+  left: -5px;
+  top: 15px;
+  position: relative;
+}
+.inputs {
+  height: 50px;
+  width: 300px;
+  font-size: 17px;
+  position: relative;
+  top: -20px;
+  border: none;
+  border-radius: 3px;
+  background-color: #d1d0cd;
+  padding-left: 4px;
+  outline: none;
+}
+#password { top: -15px; }
+ </style>
+ <script>
+alert("Welcome to the demo login page made by Hairum Hamza Ansari")
+document.getElementById("LogSign").style.display = "block";
+let pasword;
+let name;
+function save() {
+  name = document.getElementById("name").value;
+  pasword = document.getElementById("password").value;
+  if (name == 0) {
+    document.getElementById("name").style.border = "solid red";
+    name = false;
+  } else {
+    document.getElementById("name").style.border = "solid green";
+  }
+  if (pasword == 0) {
+    document.getElementById("password").style.border = "solid red";
+    pasword = false;
+  } else {
+    document.getElementById("password").style.border = "solid green";
+  }
+  if (pasword !== false && name !== false) {
+    signedIn()
+  }
+}
+function signedIn() {
+  document.getElementById("name").style.border = "solid green";
+  document.getElementById("password").style.border = "solid green";
+  document.getElementById("signedIn").style.display = "block";
+  document.getElementById("loginBody").style.display = "none";
+  let x = Math.random() * 10000
+  let id = Math.round(x);
+  document.getElementById("passwordPara").innerHTML = "Your password = " + pasword + ", Your id = " + id;
+}
+function resetInput() {
+  document.getElementById("name").value = null;
+  document.getElementById("password").value = null;
+  document.getElementById("name").style.border = "none";
+  document.getElementById("password").style.border = "none";
+  document.getElementById("loginBody").style.display = "none";
+  document.getElementById("LogSign").style.display = "block";
+  document.getElementById("signinBody").style.display = "none";
+  document.getElementById("id1").value = null;
+ document.getElementById("password1").value = null;
+ document.getElementById("password1").style.border = null;
+ document.getElementById("id1").style.border = null;
+}
+function thanks() {
+  alert("Thanks You for spending your time on my demo website. Hope you like it. Feel free to give feedback")
+  document.getElementById("signedIn").style.display = "none";
+  document.getElementById("signedIn").style.display = "none";
+  document.getElementById("loginBody").style.display = "block";
+  document.getElementById("name").style.border = null;
+  document.getElementById("password").style.border = null;
+  document.getElementById("loggedIn").style.display = "none";
+  resetInput()
+}
+function reqSignIn() {
+  document.getElementById("signedIn").style.display = "none";
+  document.getElementById("loginBody").style.display = "block";
+  document.getElementById("name").style.border = null;
+  document.getElementById("password").style.border = null;
+  document.getElementById("LogSign").style.display = "none";
+}
+function reqLogIn() {
+  document.getElementById("signedIn").style.display = "none";
+  document.getElementById("signinBody").style.display = "block";
+  document.getElementById("loginBody").style.display = "none";
+  document.getElementById("name").style.border = null;
+  document.getElementById("password").style.border = null;
+  document.getElementById("LogSign").style.display = "none";
+  
+}
+function save1() {
+  let id = document.getElementById("id1").value;
+  pasword1 = document.getElementById("password1").value;
+  if (id == 0) {
+    document.getElementById("id1").style.border = "solid red";
+    id = false;
+  } else {
+    document.getElementById("id1").style.border = "solid green";
+  }
+  if (pasword1 == 0) {
+    document.getElementById("password1").style.border = "solid red";
+    pasword1 = false;
+  } else {
+    document.getElementById("password1").style.border = "solid green";
+  }
+  if (pasword1 !== false && id !== false) {
+    loggedIn()
+  }
+}
+function loggedIn() {
+  document.getElementById("signinBody").style.display = "none";
+  document.getElementById("loggedIn").style.display = "block";
+ document.getElementById("id1").value = null;
+ document.getElementById("password1").value = null;
+ document.getElementById("password1").style.border = null;
+ document.getElementById("id1").style.border = null;
+}
+// #3f7feb
+//text colour hex 
+//coded by Hairum Hamza Ansari
+ </script>
+</html>
